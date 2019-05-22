@@ -1,0 +1,20 @@
+ajouter bouton 
+ valider 
+ annuler chef de projet
+ annuler direction
+remarque chef projet
+remarque direction
+affiche status si approved
+
+
+la liste des codes
+crud staff
+crud codes
+
+status en attente de validation
+        validé
+        annulé
+feuille chef de projet
+
+enlever code php de view 
+creeer fonction update

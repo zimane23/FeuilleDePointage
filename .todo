@@ -1,0 +1,30 @@
+
+-ajouter un select pour l'employer a valider( select utilisateur) 
+-ajouter un boutton retour home page
+_ajouter home page
+
+
+$codesid=query( "SELECT * FROM heures WHERE  user_id=:id ",
+array("id" => $id),
+$conn);
+$codesid=$codesid->fetchAll(PDO::FETCH_OBJ);
+//var_dump($codesid);
+$codes= array();
+$nbrcodes = count($codesid);
+
+//$codes=$conn->query("SELECT * FROM codes");
+//$codes=$codes->fetchAll(PDO::FETCH_OBJ);
+foreach ($codesid as $codeid){
+  $codess=query( "SELECT * FROM codes WHERE  id=:id",
+  array("id" => $codeid->code_id),
+  $conn);
+}
+$codess=$codess->fetchAll(PDO::FETCH_OBJ);
+var_dump($codes);
+
+if(isset($_GET["ajoutercodeid"])){
+  foreach ($ajoutercodes as $ajoutercodesId => $ajoutercode){
+    if($ajoutercodesId==$_GET["ajoutercodeid"]) {
+      array_push($codes,$ajoutercode->code);} 
+  }
+}
