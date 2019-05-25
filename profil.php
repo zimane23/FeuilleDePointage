@@ -139,6 +139,7 @@ if (isset($_GET["editUser"])){
 }
 
 
-require "profil.view.php";
+require "views/header.view.php";
+require "views/profil.view.php";
 
 ?>

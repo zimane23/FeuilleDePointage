@@ -146,8 +146,8 @@ if (isset($_GET["projetvalid"]) && isset($_GET["week"]) && isset($_GET["id"])) {
   );
   $ligne = $ligne->fetchAll(PDO::FETCH_OBJ);
   query(
-    "INSERT INTO validations(week,approved,user_id,code_id,validator_id,date) VALUES (:week,1,:user_id,:code_id,:validator_id,NOW())",
-    array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id, "validator_id" =>$_SESSION["id"] ),
+    "INSERT INTO validations(week,approved,user_id,code_id,chef_id,validator_id,date) VALUES (:week,1,:user_id,:code_id,:chef_id,:validator_id,NOW())",
+    array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id,"chef_id" =>$ligne[0]->chef_id , "validator_id" =>$_SESSION["id"] ),
     $conn
   );
   header('Location: feuille.php?id=' . $_GET["id"] . '&week=' . $_GET["week"]);
@@ -161,8 +161,8 @@ if (isset($_GET["projetrejet"]) && isset($_GET["week"]) && isset($_GET["id"])) {
   );
   $ligne = $ligne->fetchAll(PDO::FETCH_OBJ);
   query(
-    "INSERT INTO validations(week,approved,user_id,code_id,validator_id,date) VALUES (:week,0,:user_id,:code_id,:validator_id,NOW())",
-    array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id, "validator_id" =>$_SESSION["id"] ),
+    "INSERT INTO validations(week,approved,user_id,code_id,chef_id,validator_id,date) VALUES (:week,0,:user_id,:code_id,:chef_id,:validator_id,NOW())",
+    array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id,"chef_id" =>$ligne[0]->chef_id, "validator_id" =>$_SESSION["id"] ),
     $conn
   );
 
@@ -219,8 +219,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       );
       $ligne = $ligne->fetchAll(PDO::FETCH_OBJ);
       query(
-        "INSERT INTO validations(week,approved,user_id,code_id,validator_id,date) VALUES (:week,1,:user_id,:code_id,:validator_id,NOW())",
-        array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id, "validator_id" =>$_SESSION["id"] ),
+        "INSERT INTO validations(week,approved,user_id,code_id,chef_id,validator_id,date) VALUES (:week,1,:user_id,:code_id,:chef_id,:validator_id,NOW())",
+        array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id,"chef_id" =>$ligne[0]->chef_id, "validator_id" =>$_SESSION["id"] ),
         $conn
       );
       foreach ($_POST["date"] as $keydate => $tabdate) {
@@ -257,8 +257,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       );
       $ligne = $ligne->fetchAll(PDO::FETCH_OBJ);
       query(
-        "INSERT INTO validations(week,approved,user_id,code_id,validator_id,date) VALUES (:week,0,:user_id,:code_id,:validator_id,NOW())",
-        array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id, "validator_id" =>$_SESSION["id"] ),
+        "INSERT INTO validations(week,approved,user_id,code_id,chef_id,validator_id,date) VALUES (:week,0,:user_id,:code_id,:chef_id,:validator_id,NOW())",
+        array("week" => $_GET["week"], "user_id" => $_GET["id"], "code_id" => $ligne[0]->id,"chef_id" =>$ligne[0]->chef_id, "validator_id" =>$_SESSION["id"] ),
         $conn
       );
     }
@@ -269,7 +269,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 }
-require "feuille.view.php";
+require "views/header.view.php";
+require "views/feuille.view.php";
 
 
 

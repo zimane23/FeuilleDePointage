@@ -1,5 +1,3 @@
-<?php require "header.view.php" ?>
-
 <!--<fieldset id="myFieldset" <?=  $userSession->is == "owner" ? "" : "disabled" ?>> -->
 
 <div class="container-fluid">
@@ -191,10 +189,11 @@
     <input class="btn btn-outline-info" type="submit" name="submitvalid" value="Valider">
     <input class="btn btn-outline-info" type="submit" name="cancelmanager" value="Annuler">
   </div>
+  -->
   <div class="float-right" <?= !($userSession->is == "drh") ? "hidden" : "" ?>>  
-    <input class="btn btn-outline-info" type="submit" name="submit" value="Annuler">
+    <input class="btn btn-outline-info" type="submit" name="submit" value="Rejeter">
   </div>
- -->
+ 
     <br>
     <br>
     <br>
